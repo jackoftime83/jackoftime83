@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+        <title>Ballon Game</title>
+        <style type="text/css">
+:root{
+    --primary:orange;
+    --secondry: orange;
+    --third: yellow;
+    --forth: gold;
+    --fifth: red;
+
+    --d2w: linear-gradient(#0008,#0000,#fff8);
+    --w2d: linear-gradient(#fff8,#0000,#0008);
+    --hw: linear-gradient(90deg,#fff0,#fffa);
+    --hd: linear-gradient(90deg, #0000,#000a);
+    --pattern: linear-gradient(45deg, transparent 95%, var(--forth) 95%) 0 0 / 10px 10px,
+                linear-gradient(135deg, transparent 95%, var(--forth) 95%) 0 0 / 10px 10px,
+                linear-gradient(225deg, transparent 95%, var(--forth) 95%) 0 0 / 10px 10px,
+                linear-gradient(315deg, transparent 95%, var(--forth) 95%) 0 0 / 10px 10px;
+}
+*, * *{
+    box-sizing: boarder-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    width: 100vw;
+    height: 100vh;
+    background-color: aqua;
+    color: white;
+    text-shadow: .1em .1em 0em var(--third);
+    /* text-shadow: -0.1em -0.1em var(--third),
+                0em -0.1em var(--third),
+                .1em -0.1em var(--third),
+                -0.1em 0em var(--third),
+                0em 0em var(--third),
+                .1em 0em var(--third),
+                -0.1em 0.1em var(--third),
+                0em 0.1em var(--third),
+                .1em 0.1em var(--third); */
+    -webkit-text-stroke: .1em black;
+    margin: 0;
+    height: 0;
+    overflow: hidden;
+    position: relative;
+    font-family: cursive;
+}
+.glass{
+    background: linear-gradient(45deg, #FFF4, #FFF8, #FFF4);
+    border-color: #FFFc;
+    border-style: outset;
+    border-width: .1em .25em .25em .1em;
+    backdrop-filter: blur(5px);
+}
+header{
+    width: 100vw;
+    height: auto;
+    background: var(--pattern);
+    background-color: var(--primary);
+    box-sizing: border-box;
+    font-size: 24px;
+    font-weight: 900;
+    padding: .25em 1em 0.5em 1em;
+    /* border-bottom: .25em solid var(--third); */
+    border-width: 0em 0em .25em 0em !important;
+    border-radius: 0 0 1em 1em;
+    box-shadow: 0 .1em 1em 0em white;
+    position: fixed;
+    z-index: 99;
+    
+    /* opacity: .1; */
+}
+header table{
+    width: 100%;
+}
+nav{
+    height:50vh;
+    width:50vw;
+    font-size: 150%;
+    font-weight: 900;
+    background: linear-gradient(-45deg, transparent 35%, #fff8 50%, transparent 65%) 0 0 / 100% 100%,var(--pattern);
+    background-color: var(--primary);
+    border-radius: 1em;
+    border: 0em solid var(--secondry);
+    box-sizing: border-box;
+    box-shadow: .25em .25em 1em white;
+    position: absolute;
+    top: 25vh;
+    left: 25vw;
+    z-index: 98;
+
+    display: block;
+    
+}
+
+nav p{
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align:center ;
+}
+nav span{
+    display: inline-block;
+    width: 100%;
+}
+nav #disptop{
+    font-size: 5em;
+}
+nav button{
+    font: inherit;
+    color: white;
+    background: var(--third);
+    border-radius:0.5em;
+    padding: 0.5em 2em;
+    border: 0;
+    color: var(--primary);
+    -webkit-text-stroke:1px var(--primary);
+    box-shadow: .1em .1em 0 white;
+}
+main{
+    /* outline: 5px solid rgba(255, 0, 0, 0.2);
+    outline-offset:-5px; */
+    
+    font-size: 5vw;
+    font-weight: 900;
+    
+    width: 100vw;
+    height:100vh;
+    position: relative;
+    background: var(--d2w);
+}
+main > *,
+main div{
+    display: inline-block;
+    width: 2em;
+    height: 2em;
+    background: radial-gradient( transparent 55%, black) 0% 85% / 100% 120% no-repeat, radial-gradient( transparent 55%, white) 0% 0% / 100% 120% no-repeat;
+    background-color: grey;
+    box-sizing: border-box;
+    border-width: 1px;
+    /* border-width: 0.2em; */
+    border-style: solid;
+    border-color: #fffa #fff8 #0008 #000a;
+    border-radius: 5em 5em 0em 5em;
+    transform: rotate(45deg);
+    position: absolute;
+    top: 100%;
+
+    animation: bfloat 10s ease-out 2s infinite;
+}
+main div::before{
+    content: "";
+    width: .25em;
+    height: .25em;
+    background-color: white;
+    position: absolute;
+    top: .25em;
+    left: .75em;
+    filter: blur(5px);
+}
+main div::after{
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 1px;
+    background-color: black;
+    position: absolute;
+    top: 100%;
+    left: 100%;
+    transform-origin: top;
+    transform: rotate(-45deg);
+}
+@keyframes bfloat {
+    0% {
+        top: 100%;
+        transform: rotate(45deg);
+    }
+    25% {
+        transform: rotate(30deg);
+    }
+    50% {
+        transform: rotate(60deg);
+    }
+    75%{
+        transform: rotate(45deg);
+    }
+    100% {
+        top: -7em;
+        transform: rotate(45deg);
+    }
+}
+
+        </style>
+    </head>
+    <body>
+        <header class="glass">
+            <table border="0">
+                <tbody><tr>
+                    <td>Your Score : <span id="dispscore">21</span></td>
+                    <td align="right"> Time Left : <span id="disptime">0</span></td>
+                </tr>
+            </tbody></table>
+        </header>
+        <nav id="homearea" class="glass" style="display: block;">
+            <p>
+                <span>TOP SCORE</span>
+                <br>
+                <span id="disptop">21</span>
+                <br>
+                <button onclick="game_start()">PLAY</button>
+            </p>
+        </nav>
+        <main id="gamearea">
+            <!-- <div style="background-color:blue;left:20%;"></div> -->
+        <div style="background-color: violet; left: 10%; animation-delay: 1000ms; animation-duration: 17s;"></div><div style="background-color: violet; left: 0%; animation-delay: 0ms; animation-duration: 17s;"></div><div style="background-color: orange; left: 70%; animation-delay: 7000ms; animation-duration: 9s;"></div><div style="background-color: violet; left: 20%; animation-delay: 2000ms; animation-duration: 17s;"></div></main>
+    
+    <script>
+
+
+let top_score = 0;
+let score = 0;
+let gameTime = 30;
+let game_status = false;
+
+const max_balloons = 25;
+const min_balloons = 5;
+
+const dispscore = document.getElementById('dispscore');
+const disptop = document.getElementById('disptop');
+const disptime = document.getElementById('disptime');
+
+const homearea = document.getElementById('homearea');
+const gamearea = document.getElementById('gamearea');
+
+const clor = ['red', 'orange', 'yellow', 'green', 'blue', 'violet', 'indigo', 'purple', 'magenta'];
+
+function createballoon(){
+    bdiv = document.createElement('div');
+    // bdiv.classList.add('balloon');
+    
+    i = Math.floor(Math.random() * clor.length);
+    n = Math.floor(Math.random() * 10 ) * 10;
+    bdiv.style.backgroundColor = clor[i];
+    bdiv.style.left = n+'%';
+    bdiv.style.animationDelay = n+'00ms';
+    bdiv.style.animationDuration = (((i+1)*2)+5)+'s';
+    bdiv.addEventListener('click', function(){ 
+        if(game_status){
+            score++;
+            dispscore.innerHTML = score;
+        }
+        this.remove();
+    })
+    gamearea.appendChild(bdiv);
+}
+
+function game_start() {
+    score = 0;
+    game_status = true;
+    nowgameTime = gameTime;
+    dispscore.innerHTML = score;
+    add_balloon = Math.floor(Math.random() * min_balloons) + min_balloons;
+    // console.log(add_balloon);
+    cre_balloon = setInterval(function(){
+        make_balloons();
+        disptime.innerHTML = --nowgameTime;
+    }, 1000);
+    homearea.style.display = 'none';
+    let gameTimeout = setTimeout(function(){
+        // console.log('Time Up');
+        homearea.style.display = 'block';
+        clearInterval(cre_balloon);
+        if (score > top_score) {
+            top_score = score;
+            disptop.innerHTML = top_score;
+        }
+        game_status = false;
+    },(gameTime*1000));
+}
+function make_balloons(){
+        if(gamearea.childElementCount < 1){
+            add_balloon = max_balloons;
+        } else if(gamearea.childElementCount + add_balloon > max_balloons) {
+            add_balloon = max_balloons - gamearea.childElementCount;
+        } else {
+            add_balloon += 0;
+        }
+        // console.log("Added Ballons : "+add_balloon)
+        for (let j = 0; j < add_balloon; j++) {
+            createballoon();
+        }
+    }
+    make_balloons();
+    </script>
+
+</body></html>
